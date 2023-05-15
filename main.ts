@@ -1,11 +1,18 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    basic.showNumber(receivedNumber)
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SignalStrength)))
+})
+input.onButtonPressed(Button.A, function () {
+    radio.sendString("A")
+})
+input.onButtonPressed(Button.AB, function () {
+    radio.sendString("")
 })
 radio.onReceivedString(function (receivedString) {
-    basic.showString(receivedString)
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SignalStrength)))
+})
+input.onButtonPressed(Button.B, function () {
+    radio.sendString("B")
 })
 radio.setGroup(68)
-basic.forever(function () {
-    radio.sendNumber(7)
-    radio.sendString("f u hehe")
-})
+radio.setTransmitPower(7)
+radio.setFrequencyBand(68)
